@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Code Submission Form</title>
+</head>
+<body>
+  <form action="/run" method="POST">
+    <!-- Dropdown populated from array -->
+    <label for="language">Select Language:</label>
+    <select name="language" id="language">
+      <% languages.forEach(function(lang) { %>
+        <option value="<%= lang %>" 
+          <%= (typeof selectedLanguage !== 'undefined' && selectedLanguage === lang) ? 'selected' : '' %>>
+          <%= lang %>
+        </option>
+      <% }); %>
+    </select>
+    <br><br>
+
+    <!-- Big text field -->
+    <label for="code">Code:</label><br>
+    <textarea name="code" id="code" rows="15" cols="80"><%= (typeof code !== 'undefined') ? code : '' %></textarea>
+    <br><br>
+  
+    <!-- Submit button -->
+    <button type="submit">Submit</button>
+  </form>
+  <br><br><br>
+
+  <span>-----------------OUTPUT-----------------</span><br>
+  <% if (typeof output !== 'undefined') { %>
+    <span><%= output %></span>
+  <% } %>
+</body>
+</html>
